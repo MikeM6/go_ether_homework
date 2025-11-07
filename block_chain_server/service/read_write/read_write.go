@@ -1,5 +1,5 @@
 // Package readwrite: task1: read write block chain
-package readwrite
+package read_write
 
 import (
 	"context"

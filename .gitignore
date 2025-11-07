@@ -56,3 +56,4 @@ LICENSE
 MakeFile
 SECURITY.md
 /server
+/block_chain_server/node_modules

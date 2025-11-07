@@ -1,9 +1,10 @@
 package main
 
 import (
+	"block_chain_server/service/deplpy_contracts"
+	readwrite "block_chain_server/service/read_write"
 	"fmt"
 	"log"
-	readwrite "main/service/read_write"
 	"math/big"
 	"os"
 	"strconv"
@@ -17,6 +18,15 @@ import (
     (以上金额单位为 wei，例子代表 0.01 ETH)
 */
 func main() {
+	// choose action by args:
+	//   - "deploy": deploy and interact with Counter contract
+	//   - otherwise: read/write helpers (latest block, specific block, send)
+
+	// readWriteBlockChain()
+	deplpy_contracts.DeployCountContract()
+}
+
+func readWriteBlockChain() {
 	if len(os.Args) > 1 && os.Args[1] == "send" {
 		if len(os.Args) < 4 {
 			log.Fatal("usage go run . send <to> <amountwei>")
@@ -43,5 +53,4 @@ func main() {
 	if err := readwrite.QueryBlockInfo(num); err != nil {
 		log.Fatal(err)
 	}
-
 }
